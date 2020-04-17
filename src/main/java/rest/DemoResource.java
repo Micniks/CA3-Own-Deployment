@@ -4,8 +4,6 @@ import com.google.gson.Gson;
 import dto.ChuckJokeDTO;
 import dto.DadJokeDTO;
 import dto.ApiDTO;
-import dto.CopenhagenTimeDTO;
-import dto.CountryDTO;
 import entities.User;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -92,8 +90,6 @@ public class DemoResource {
         String[] fetchStrings = new String[]{
             ChuckJokeDTO.getRANDOM_URL(),
             DadJokeDTO.getRANDOM_URL(),
-            CountryDTO.getCOUNTRY_URL(),
-            CopenhagenTimeDTO.getTIME_URL()
         };
         String[] fetched = new String[fetchStrings.length];
         ExecutorService workingJack = Executors.newFixedThreadPool(fetchStrings.length);
@@ -116,10 +112,8 @@ public class DemoResource {
 
             ChuckJokeDTO chuck = GSON.fromJson(fetched[0], ChuckJokeDTO.class);
             DadJokeDTO dad = GSON.fromJson(fetched[1], DadJokeDTO.class);
-            CountryDTO country = GSON.fromJson(fetched[2], CountryDTO[].class)[0];
-            CopenhagenTimeDTO time = GSON.fromJson(fetched[3], CopenhagenTimeDTO.class);
             
-            ApiDTO apis = new ApiDTO(chuck, dad, country, time);
+            ApiDTO apis = new ApiDTO(chuck, dad);
             return GSON.toJson(apis);
         } catch (InterruptedException ex) {
             Logger.getLogger(DemoResource.class.getName()).log(Level.SEVERE, null, ex);

@@ -1,7 +1,6 @@
 package rest;
 
 import dto.ApiDTO;
-import entities.RenameMe;
 import io.restassured.RestAssured;
 import static io.restassured.RestAssured.given;
 import io.restassured.http.ContentType;
@@ -26,7 +25,6 @@ public class DemoResourceTest {
     
  private static final int SERVER_PORT = 7777;
     private static final String SERVER_URL = "http://localhost/api";
-    private static RenameMe r1, r2;
 
     static final URI BASE_URI = UriBuilder.fromUri(SERVER_URL).port(SERVER_PORT).build();
     private static HttpServer httpServer;
@@ -73,16 +71,6 @@ public class DemoResourceTest {
             assertTrue(!result.getChuckJoke().isEmpty());
             assertTrue(!Objects.isNull(result.getChuckJokeID()));
             assertTrue(!result.getChuckJokeID().isEmpty());
-            
-            assertTrue(!Objects.isNull(result.getCountryArea()));
-            assertTrue(!result.getCountryArea().isEmpty());
-            assertTrue(!Objects.isNull(result.getCountryName()));
-            assertTrue(!result.getCountryName().isEmpty());
-            
-            assertTrue(!Objects.isNull(result.getCopenhagenTime()));
-            assertTrue(!result.getCopenhagenTime().isEmpty());
-            assertTrue(!Objects.isNull(result.getWeekNumber()));
-            assertTrue(!result.getWeekNumber().isEmpty());
             
             assertTrue(!Objects.isNull(result.getDadJoke()));
             assertTrue(!result.getDadJoke().isEmpty());
